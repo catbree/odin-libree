@@ -1,3 +1,61 @@
-html {
-    background-color: white;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+h1.title {
+    margin-top: 16px;
+}
+
+.title + button {
+    margin-bottom: 24px;
+}
+
+.bookList {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 24px;
+
+    margin-top: 24px;
+}
+
+.book {
+    border: 1px solid black;
+    padding: 16px;
+}
+
+.book h2 {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.book p {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;   
+    gap: 16px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    font-weight: 800;
+}
+
+.deleteButton {
+    color: red;
 }
