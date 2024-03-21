@@ -8,43 +8,36 @@
 </head>
 <body>
     <h1 class="title">Libree</h1>
-    <button>Add book</button>
-    <div class="bookList">
-        <div class="book">
-            <div class="bookContent">
-                <h2 class="bookTitle">Daring Greatly</h2>
-                <p class="bookAuthor">Brene Drown</p>
-                <p class="bookPages">320</p>
-                <div class="bookStatus">Read</div>
+    <button class="addBookButton">Add book</button>
+    <div class="bookList"></div>
+
+    <div id="addBookModal" class="modal">
+        <div class="modalContent">
+            <span class="close cancelModalButton">&times;</span>
+            <h2>Add a book</h2>
+            <div class="inputField">
+                <label for="bookTitle">Title</label>
+                <input type="text" id="bookTitle">
+            </div>
+            <div class="inputField">
+                <label for="bookAuthor">Author</label>
+                <input type="text" id="bookAuthor">
+            </div>
+            <div class="inputField">
+                <label for="bookPages">Number of Pages</label>
+                <input type="number" id="bookPages">
+            </div>
+            <div class="inputField">
+                <label>Have you read this book?
+                    <input type="checkbox" id="bookStatus" checked="read">
+                </label>
             </div>
             <div class="buttonGroup">
-                <button>Mark as Read</button>
-                <button class="deleteButton">Delete</button>
+                <button class="saveBookButton">Add Book</button>
+                <button class="cancelModalButton redButton">Cancel</button>
             </div>
-        </div>
-        <div class="book">
-            <div class="bookContent">
-                <h2 class="bookTitle">Bridge to Terabithia</h2>
-                <p class="bookAuthor">Katherine Paterson</p>
-                <p class="bookPages">208</p>
-                <div class="bookStatus">Read</div>
-            </div>
-            <div class="buttonGroup">
-                <button>Mark as Read</button>
-                <button class="deleteButton">Delete</button>
-            </div>
-        </div>
-        <div class="book">
-            <div class="bookContent">
-                <h2 class="bookTitle">Animal Farm</h2>
-                <p class="bookAuthor">George Orwell</p>
-                <p class="bookPages">176</p>
-                <div class="bookStatus">Not Read</div>
-            </div>
-            <div class="buttonGroup">
-                <button>Mark as Read</button>
-                <button class="deleteButton">Delete</button>
-            </div>
+            
+            
         </div>
     </div>
 
