@@ -1,4 +1,4 @@
-const library = [];
+let library = [];
 
 function Book(title, author, pages, status, id) {
     this.title = title;
@@ -7,6 +7,21 @@ function Book(title, author, pages, status, id) {
     this.status = status;
     this.id = id;
 }
+
+Book.prototype.toggleStatus = function() {
+    if(this.status==true) {
+        this.status=false;
+        console.log(`status is read, toggling to ${this.status}`);
+
+
+    }
+    else if(this.status==false) {
+        this.status=true;
+        
+        console.log(`status is not read, toggling to ${this.status}`);
+
+    }
+};
 
 library[0] = new Book("Daring Greatly", "Brene Brown", 320, true, 0);
 library[1] = new Book("Bridge to Terabithia", "Katherine Paterson", 208, false, 1);
@@ -22,7 +37,6 @@ function refreshBookDisplay() {
 function updateBookDisplay(library) {
     
     for(i=0;i<library.length;i++) {
-        console.log(library[i].title);
         const book = document.createElement("div");
         book.classList.add("book");
 
@@ -35,11 +49,11 @@ function updateBookDisplay(library) {
 
         const bookAuthor = document.createElement("p");
         bookAuthor.textContent = library[i].author;
-        bookTitle.classList.add("bookAuthor");
+        bookAuthor.classList.add("bookAuthor");
 
         const bookPages = document.createElement("p");
         bookPages.textContent = library[i].pages;
-        bookTitle.classList.add("bookPages");
+        bookPages.classList.add("bookPages");
 
         const bookStatus = document.createElement("p");
         if (library[i].status == true) {
@@ -47,18 +61,19 @@ function updateBookDisplay(library) {
         } else {
             bookStatus.textContent = "Not Read";
         }
-        bookTitle.classList.add("bookStatus");
+        bookStatus.classList.add("bookStatus");
 
         const buttonGroup = document.createElement("div");
         buttonGroup.classList.add("buttonGroup");
 
         const markAsReadButton = document.createElement("button");
         markAsReadButton.textContent = "Mark as read";
+        markAsReadButton.classList.add("markAsReadButton");
 
         const deleteBookButton = document.createElement("button");
         deleteBookButton.textContent = "Delete";
         deleteBookButton.classList.add("redButton");
-        deleteBookButton.classList.add("deleteBookButton")
+        deleteBookButton.classList.add("deleteBookButton");
 
         bookContent.append(bookTitle);
         bookContent.append(bookAuthor);
@@ -71,8 +86,6 @@ function updateBookDisplay(library) {
         book.append(bookContent);
         book.append(buttonGroup);
         bookList.append(book);
-
-        console.log("I've added a book")
     }
 }
 
@@ -81,9 +94,7 @@ function addBookToLibrary(bookTitle, bookAuthor, bookPages, bookStatus) {
     let bookId = library.length;
 
     const newBook = new Book(bookTitle, bookAuthor, bookPages, bookStatus, bookId);
-    console.log("AddBookToLibrary function activated")
     console.log(`${bookTitle} by ${bookAuthor}, ${bookPages} pages, ${bookStatus}`)
-    console.log(newBook);
     library.push(newBook);
     refreshBookDisplay();
     updateBookDisplay(library);
@@ -95,7 +106,6 @@ var cancelModalButtons = document.querySelectorAll(".cancelModalButton");
 
 addBookButton.addEventListener("click", () => {
     addBookModal.style.display = "block";
-    console.log(`add button clicked`);
 })
 
 cancelModalButtons.forEach(cancelModalButton => {
@@ -110,6 +120,7 @@ var bookAuthor = document.querySelector("#bookAuthor");
 var bookPages = document.querySelector("#bookPages");
 var bookStatus = document.querySelector("#bookStatus");
 
+
 saveBookButton.addEventListener("click", () => {
     addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
     addBookModal.style.display = "none";
@@ -118,9 +129,31 @@ saveBookButton.addEventListener("click", () => {
 const deleteBookButtons = document.querySelectorAll(".deleteBookButton");
 deleteBookButtons.forEach(deleteBookButton => {
     deleteBookButton.addEventListener("click", (e) => {
-        console.log("delete button pressed");
-        console.log(e.target.parentNode.parentNode);
-        e.target.parentNode.parentNode.remove();
+        targetBookTitle = e.target.parentNode.parentNode.querySelector(".bookTitle").textContent;
+        library = library.filter( book => book.title !== targetBookTitle);
+        refreshBookDisplay();
+        updateBookDisplay(library);
     })
 })
 
+const markAsReadButtons = document.querySelectorAll(".markAsReadButton");
+markAsReadButtons.forEach(markAsReadButton => {
+    markAsReadButton.addEventListener("click", function (e) {
+            console.log(`Mark as read button pressed`);
+            targetBookTitle = e.target.parentNode.parentNode.querySelector(".bookTitle").textContent;
+            targetBook = library.find(book => book.title == targetBookTitle);
+            targetBook.toggleStatus();
+
+            if (targetBook.status == true) {
+                e.target.parentNode.parentNode.querySelector(".bookStatus").textContent = "Read";
+                console.log(`updating to ${e.target.parentNode.parentNode.querySelector(".bookStatus").textContent}`);
+            } 
+            
+            if (targetBook.status == false) {
+                e.target.parentNode.parentNode.querySelector(".bookStatus").textContent = "Not Read";
+                console.log(`updating to ${e.target.parentNode.parentNode.querySelector(".bookStatus").textContent}`);
+            }
+
+
+        })
+})
