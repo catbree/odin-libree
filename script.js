@@ -58,6 +58,7 @@ function updateBookDisplay(library) {
         const deleteBookButton = document.createElement("button");
         deleteBookButton.textContent = "Delete";
         deleteBookButton.classList.add("redButton");
+        deleteBookButton.classList.add("deleteBookButton")
 
         bookContent.append(bookTitle);
         bookContent.append(bookAuthor);
@@ -116,8 +117,10 @@ saveBookButton.addEventListener("click", () => {
 
 const deleteBookButtons = document.querySelectorAll(".deleteBookButton");
 deleteBookButtons.forEach(deleteBookButton => {
-    deleteBookButton.addEventListener("click", () => {
+    deleteBookButton.addEventListener("click", (e) => {
         console.log("delete button pressed");
+        console.log(e.target.parentNode.parentNode);
+        e.target.parentNode.parentNode.remove();
     })
 })
 
