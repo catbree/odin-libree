@@ -1,15 +1,16 @@
 const library = [];
 
-function Book(title, author, pages, status) {
+function Book(title, author, pages, status, id) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
+    this.id = id;
 }
 
-library[0] = new Book("Daring Greatly", "Brene Brown", 320, true);
-library[1] = new Book("Bridge to Terabithia", "Katherine Paterson", 208, false);
-library[2] = new Book("Animal Farm", "Goerge Orwell", 176, false);
+library[0] = new Book("Daring Greatly", "Brene Brown", 320, true, 0);
+library[1] = new Book("Bridge to Terabithia", "Katherine Paterson", 208, false, 1);
+library[2] = new Book("Animal Farm", "Goerge Orwell", 176, false, 2);
 
 const bookList = document.querySelector(".bookList");
 updateBookDisplay(library);
@@ -69,12 +70,16 @@ function updateBookDisplay(library) {
         book.append(bookContent);
         book.append(buttonGroup);
         bookList.append(book);
+
         console.log("I've added a book")
     }
 }
 
 function addBookToLibrary(bookTitle, bookAuthor, bookPages, bookStatus) {
-    const newBook = new Book(bookTitle, bookAuthor, bookPages, bookStatus);
+    
+    let bookId = library.length;
+
+    const newBook = new Book(bookTitle, bookAuthor, bookPages, bookStatus, bookId);
     console.log("AddBookToLibrary function activated")
     console.log(`${bookTitle} by ${bookAuthor}, ${bookPages} pages, ${bookStatus}`)
     console.log(newBook);
@@ -92,7 +97,7 @@ addBookButton.addEventListener("click", () => {
     console.log(`add button clicked`);
 })
 
-cancelModalButtons.forEach (cancelModalButton => {
+cancelModalButtons.forEach(cancelModalButton => {
     cancelModalButton.addEventListener("click", () => {
         addBookModal.style.display = "none";
     })
@@ -107,5 +112,12 @@ var bookStatus = document.querySelector("#bookStatus");
 saveBookButton.addEventListener("click", () => {
     addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
     addBookModal.style.display = "none";
+})
+
+const deleteBookButtons = document.querySelectorAll(".deleteBookButton");
+deleteBookButtons.forEach(deleteBookButton => {
+    deleteBookButton.addEventListener("click", () => {
+        console.log("delete button pressed");
+    })
 })
 
