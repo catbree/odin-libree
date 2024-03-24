@@ -11,15 +11,9 @@ function Book(title, author, pages, status, id) {
 Book.prototype.toggleStatus = function() {
     if(this.status==true) {
         this.status=false;
-        console.log(`status is read, toggling to ${this.status}`);
-
-
     }
     else if(this.status==false) {
         this.status=true;
-        
-        console.log(`status is not read, toggling to ${this.status}`);
-
     }
 };
 
@@ -146,14 +140,14 @@ markAsReadButtons.forEach(markAsReadButton => {
 
             if (targetBook.status == true) {
                 e.target.parentNode.parentNode.querySelector(".bookStatus").textContent = "Read";
+                markAsReadButton.textContent = "Mark as not read"
                 console.log(`updating to ${e.target.parentNode.parentNode.querySelector(".bookStatus").textContent}`);
             } 
             
             if (targetBook.status == false) {
                 e.target.parentNode.parentNode.querySelector(".bookStatus").textContent = "Not Read";
+                markAsReadButton.textContent = "Mark as read"
                 console.log(`updating to ${e.target.parentNode.parentNode.querySelector(".bookStatus").textContent}`);
             }
-
-
         })
 })

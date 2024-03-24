@@ -1,0 +1,41 @@
+[33mcommit a2e407e919dfbd32d2ca89a42acd19417f2f1cf6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Sat Mar 23 05:37:08 2024 +0800
+
+    updating status
+
+[33mcommit 3c3f5aa98964f8a128c68d2169c5b2a1e3b09bc2[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 18:03:37 2024 +0800
+
+    delete button is now working
+
+[33mcommit b6148702197e8866239572b82567a7b86153aae5[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 15:23:46 2024 +0800
+
+    added book id related to library array for deletion
+
+[33mcommit 6316ddc7352cc5fa9c43c1411a2e389b6cd511c9[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 03:15:15 2024 +0800
+
+    Added update library function, refresh library function, and add book function which opens modal
+
+[33mcommit c764e1b88d2e525962f968243098bb992dbb2da3[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 00:59:19 2024 +0800
+
+    did html skeleton with some basic css styling
+
+[33mcommit d91ea4f20eef9ed0638019345f5acffbca7c1f6e[m
+Author: Hoi Cheng <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 00:33:15 2024 +0800
+
+    initialised html css javascript
+
+[33mcommit aa072ab6c68fee9435319702b52c4ecd068cb047[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: catbree <49464204+catbree@users.noreply.github.com>
+Date:   Fri Mar 22 00:25:51 2024 +0800
+
+    Initial commit
