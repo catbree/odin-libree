@@ -1,27 +1,26 @@
-let library = [];
+class Book {
+    constructor(title, author, pages, status, id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.id = id;
+    }
 
-function Book(title, author, pages, status, id) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.id = id;
+    toggleStatus() {
+        if (this.status == true) {
+            this.status = false;
+            console.log(`status is read, toggling to ${this.status}`);
+        }
+        else if (this.status == false) {
+            this.status = true;
+            console.log(`status is not read, toggling to ${this.status}`);
+        }
+    }
 }
 
-Book.prototype.toggleStatus = function() {
-    if(this.status==true) {
-        this.status=false;
-        console.log(`status is read, toggling to ${this.status}`);
+let library = [];
 
-
-    }
-    else if(this.status==false) {
-        this.status=true;
-        
-        console.log(`status is not read, toggling to ${this.status}`);
-
-    }
-};
 
 library[0] = new Book("Daring Greatly", "Brene Brown", 320, true, 0);
 library[1] = new Book("Bridge to Terabithia", "Katherine Paterson", 208, false, 1);
